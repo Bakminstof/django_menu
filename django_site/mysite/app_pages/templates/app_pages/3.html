@@ -1,0 +1,16 @@
+{% extends 'app_pages/base.html' %}
+
+{% block title %}
+Page #3
+{% endblock %}
+
+{% block body %}
+<h2>
+  Body 3
+</h2>
+
+{% load common_tags %}
+{% draw_menu 'Main menu' url_name %}
+
+<a href="{% url 'app_menu:home' %}">Home</a>
+{% endblock %}

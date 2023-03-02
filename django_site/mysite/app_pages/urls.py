@@ -1,0 +1,51 @@
+from django.urls import path
+
+from app_pages.views import (
+    Page1View,
+    Page11View,
+    Page12View,
+    Page121View,
+    Page122View,
+    Page13View,
+    Page14View,
+    Page2View,
+    Page21View,
+    Page211View,
+    Page212View,
+    Page2121View,
+    Page2122View,
+    Page22View,
+    Page3View,
+    Page31View,
+    Page4View,
+    Page41View,
+    Page411View,
+    Page412View,
+    Page413View,
+)
+
+app_name = 'app_pages'
+
+urlpatterns = [
+    path('1/', Page1View.as_view(), name='page_1'),
+    path('1/1/', Page11View.as_view(), name='page_1_1'),
+    path('1/2/', Page12View.as_view(), name='page_1_2'),
+    path('1/2/1/', Page121View.as_view(), name='page_1_2_1'),
+    path('1/2/2/', Page122View.as_view(), name='page_1_2_2'),
+    path('1/3/', Page13View.as_view(), name='page_1_3'),
+    path('1/4/', Page14View.as_view(), name='page_1_4'),
+    path('2/', Page2View.as_view(), name='page_2'),
+    path('2/1/', Page21View.as_view(), name='page_2_1'),
+    path('2/1/1/', Page211View.as_view(), name='page_2_1_1'),
+    path('2/1/2/', Page212View.as_view(), name='page_2_1_2'),
+    path('2/1/2/1/', Page2121View.as_view(), name='page_2_1_2_1'),
+    path('2/1/2/2/', Page2122View.as_view(), name='page_2_1_2_2'),
+    path('2/2/', Page22View.as_view(), name='page_2_2'),
+    path('3/', Page3View.as_view(), name='page_3'),
+    path('3/1/', Page31View.as_view(), name='page_3_1'),
+    path('4/', Page4View.as_view(), name='page_4'),
+    path('4/1/', Page41View.as_view(), name='page_4_1'),
+    path('4/1/1/', Page411View.as_view(), name='page_4_1_1'),
+    path('4/1/2/', Page412View.as_view(), name='page_4_1_2'),
+    path('4/1/3/', Page413View.as_view(), name='page_4_1_3'),
+]

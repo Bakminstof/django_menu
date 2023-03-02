@@ -1,0 +1,53 @@
+version: '3.3'
+
+services:
+  web_app:
+    container_name: django_mysite_menu
+    restart: always
+    env_file:
+      - .env
+    build:
+      context: ./django_site
+      dockerfile: Dockerfile
+    volumes:
+      - static_volume:/usr/src/mysite/staticfiles
+    depends_on:
+      - postgres_django
+    networks:
+      - net
+
+  postgres_django:
+    container_name: ${SQL_DB_HOST}
+    restart: always
+    env_file:
+      - .env
+    build:
+      context: ./postgresql
+      dockerfile: Dockerfile
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - net
+
+  nginx_proxy:
+    container_name: nginx_proxy_mysite_menu
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    volumes:
+      - static_volume:/usr/src/mysite/staticfiles
+    ports:
+      - "80:80"
+    networks:
+      - net
+    depends_on:
+      - web_app
+
+networks:
+  net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  static_volume:
